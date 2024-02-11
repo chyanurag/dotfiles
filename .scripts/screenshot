@@ -1,0 +1,3 @@
+#!/bin/sh
+f=$(date +"%d %B %Y %H:%M %P")
+cd ~/pix/ss && maim -s "$f.jpg"

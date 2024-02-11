@@ -1,0 +1,4 @@
+#!/bin/sh
+make $(echo $1 | cut -d'.' -f1)
+./$(echo $1 | cut -d'.' -f1)
+

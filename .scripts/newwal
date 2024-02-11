@@ -1,0 +1,6 @@
+#!/bin/sh
+wall=`find ~/pix/wall -type f | shuf -n 1`
+wal -c
+wal -i $wall
+xwallpaper --zoom "$wall"
+xdotool key super+F5
