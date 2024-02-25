@@ -104,5 +104,4 @@ alias py='python'
 alias ts='ts-node'
 alias qemu='qemu-system-x86_64'
 export PATH=$PATH:$HOME/.scripts:$HOME/.cargo/bin:$HOME/.local/bin
-cat ~/dox/todo
 setxkbmap -option caps:escape
