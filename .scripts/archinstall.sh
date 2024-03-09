@@ -6,7 +6,7 @@ newuser=""
 newpass=""
 rootpass=""
 hostname=""
-packages="base base-devel linux linux-firmware linux-headers intel-ucode sudo git networkmanager dhcpcd bluez bluez-utils wpa_supplicant neofetch nodejs npm python go neovim"
+packages="base base-devel linux linux-firmware linux-headers intel-ucode sudo git networkmanager dhcpcd bluez bluez-utils wpa_supplicant neofetch nodejs npm python go neovim libreoffice zip p7zip unrar xorg xorg-xinit i3"
 if ! $edited; then
     echo "Please edit all the values in the script manually to continue"
     exit
