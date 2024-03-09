@@ -1,4 +1,3 @@
-#include "fibonacci.c"
 #include <X11/XF86keysym.h>
 
 static const char* brightup[] = {"brightnessctl", "set", "+5%"};
@@ -6,12 +5,13 @@ static const char* brightdown[] = {"brightnessctl", "set", "5%-"};
 static const char* volup[] = {"wpctl", "set-volume", "@DEFAULT_SINK@", "5%+"};
 static const char* voldown[] = {"wpctl", "set-volume", "@DEFAULT_SINK@", "5%-"};
 static const char* volmute[] = { "wpctl", "set-mute", "@DEFAULT_SINK@", "toggle"};
-static const char* byebye[] = {"sh", "/home/anurag/.scripts/bye.sh"};
+static const char* byebye[] = {"/home/anu/.scripts/bye.sh"};
 static const char* lockpc[] = {"slock"};
-static const char* screenshot[] = {"sh", "/home/anurag/.scripts/screenshot"};
+static const char* screenshot[] = {"sh", "~/.scripts/screenshot"};
+static const char* filemanager[] = {"pcmanfm"};
 
 /* appearance */
-static const unsigned int borderpx  = 2;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int swallowfloating    = 0;        /* 1 means swallow floating windows by default */
@@ -52,10 +52,8 @@ static const int resizehints = 1;    /* 1 means respect size hints in tiled resi
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },    /* first entry is default */
- 	{ "[@]",      spiral },
 	{ "[M]",      monocle },
 	{ "><>",      NULL },    /* no layout function means floating behavior */
- 	{ "[\\]",      dwindle },
 };
 
 /* key definitions */
@@ -86,7 +84,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,		        		XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[0]} },
-	{ MODKEY|ShiftMask,             XK_f,  	   togglefloating, {0} },
+	{ MODKEY|ShiftMask,             XK_r,  	   togglefloating, {0} },
 	{ MODKEY,                       XK_t,  	   setlayout,      {0} },
 	{ MODKEY,                       XK_space,  		spawn,          {.v = dmenucmd } },
 	{ MODKEY,						XK_Return, spawn,          {.v = termcmd } },
@@ -114,17 +112,17 @@ static Key keys[] = {
 
 
 	/* custom key binds */
-	{ MODKEY,			    XK_p,				spawn,		{ .v = byebye }},
-	{ MODKEY,				XK_F2,				spawn,		{ .v = brightdown }},
-	{ MODKEY,				XK_F3,				spawn,		{ .v = brightup }},
-	{ 0,				    XF86XK_AudioRaiseVolume, 	spawn,		{ .v = volup }},
-	{ 0,				    XF86XK_AudioLowerVolume, 	spawn,		{ .v = voldown }},
-	{ 0, 				    XF86XK_AudioMute, 		spawn,		{ .v= volmute }},
-	{ MODKEY,			XK_x,				spawn,		{ .v = lockpc }},
-	{ MODKEY,                       XK_r,				setlayout,      {.v = &layouts[3]} },
-	{ MODKEY|ShiftMask,             XK_r,				setlayout,      {.v = &layouts[4]} },
-	{ MODKEY, 			XK_e,				spawn,          {.v= { "nemo" } }},
-    { MODKEY|ShiftMask,     XK_s,               spawn,              { .v = screenshot }}
+    { MODKEY,			    XK_p,				spawn,		{ .v = byebye }},
+    { MODKEY,				XK_F2,				spawn,		{ .v = brightdown }},
+    { MODKEY,				XK_F3,				spawn,		{ .v = brightup }},
+    { 0,				    XF86XK_AudioRaiseVolume, 	spawn,		{ .v = volup }},
+    { 0,				    XF86XK_AudioLowerVolume, 	spawn,		{ .v = voldown }},
+    { 0, 				    XF86XK_AudioMute, 		spawn,		{ .v= volmute }},
+    { MODKEY,			    XK_x,				spawn,		{ .v = lockpc }},
+    { MODKEY,               XK_r,				setlayout,      {.v = &layouts[3]} },
+    { MODKEY, 			    XK_e,				spawn,          {.v = filemanager }},
+    { MODKEY|ShiftMask,     XK_s,               spawn,              { .v = screenshot }},
+    { MODKEY|ShiftMask,     XK_f,      togglefullscr,  {0} },
 };
 
 /* button definitions */

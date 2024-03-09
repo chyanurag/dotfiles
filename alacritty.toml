@@ -1,0 +1,32 @@
+import = ["~/.cache/wal/alacritty.toml"]
+
+live_config_reload = true
+
+[window]
+padding = { x = 10, y = 10 }
+dynamic_padding = true
+opacity = 0.9
+decorations_theme_variant = "dark"
+
+[scrolling]
+history = 100000
+multiplier = 5
+
+[font]
+normal = { family = "FiraCode Nerd Font Mono", style = "Regular" }
+bold = { family = "FiraCode Nerd Font Mono", style = "Bold" }
+italic = { family = "FiraCode Nerd Font Mono", style = "Italic" }
+size = 13.0
+
+[mouse]
+bindings = [
+	{ mouse = "Right", action = "Paste" }
+]
+
+[keyboard]
+bindings = [
+	{ key = "j", mods = "Alt|Shift", action = "DecreaseFontSize" },
+	{ key = "k", mods = "Alt|Shift", action = "IncreaseFontSize" },
+	{ key = "c", mods = "Alt", action = "Copy" },
+	{ key = "v", mods = "Alt", action = "Paste" }
+]

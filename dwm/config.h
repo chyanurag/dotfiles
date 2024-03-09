@@ -5,9 +5,10 @@ static const char* brightdown[] = {"brightnessctl", "set", "5%-"};
 static const char* volup[] = {"wpctl", "set-volume", "@DEFAULT_SINK@", "5%+"};
 static const char* voldown[] = {"wpctl", "set-volume", "@DEFAULT_SINK@", "5%-"};
 static const char* volmute[] = { "wpctl", "set-mute", "@DEFAULT_SINK@", "toggle"};
-static const char* byebye[] = {"sh", "~/.scripts/bye.sh"};
+static const char* byebye[] = {"/home/anu/.scripts/bye.sh"};
 static const char* lockpc[] = {"slock"};
 static const char* screenshot[] = {"sh", "~/.scripts/screenshot"};
+static const char* filemanager[] = {"pcmanfm"};
 
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
@@ -119,9 +120,8 @@ static Key keys[] = {
     { 0, 				    XF86XK_AudioMute, 		spawn,		{ .v= volmute }},
     { MODKEY,			    XK_x,				spawn,		{ .v = lockpc }},
     { MODKEY,               XK_r,				setlayout,      {.v = &layouts[3]} },
-    { MODKEY, 			    XK_e,				spawn,          {.v= { "nemo" } }},
+    { MODKEY, 			    XK_e,				spawn,          {.v = filemanager }},
     { MODKEY|ShiftMask,     XK_s,               spawn,              { .v = screenshot }},
-    { MODKEY|ShiftMask,     XK_f,      togglefullscr,  {0} },
 };
 
 /* button definitions */
