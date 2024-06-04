@@ -105,3 +105,4 @@ alias ts='ts-node'
 alias qemu='qemu-system-x86_64'
 export PATH=$PATH:$HOME/.scripts:$HOME/.cargo/bin:$HOME/.local/bin
 setxkbmap -option caps:escape
+xset r rate 150 50
