@@ -11,16 +11,11 @@ vo.expandtab = true
 
 vo.wrap = false
 
-vo.smartindent = true
-
 vo.swapfile = false
+vo.undofile = true
 vo.backup = false
 
-vo.undofile = true
-
 vo.hlsearch = false
-vo.incsearch = true
+vo.incsearch = false
 
 vo.termguicolors = true
-
-vo.updatetime = 50
