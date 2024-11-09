@@ -1,4 +1,5 @@
-require 'options'
-require 'keymaps'
+require 'opts'
+require 'keys'
 require 'manager'
+
 require 'lsp'
