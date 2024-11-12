@@ -149,3 +149,4 @@ bindsym $mod+p exec --no-startup-id ~/.local/bin/bye.sh
 exec --no-startup-id ~/.local/bin/newwal
 
 hide_edge_borders both
+for_window [class="Opengl" instance="Opengl"] floating enable
