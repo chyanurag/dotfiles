@@ -1,6 +1,3 @@
 #!/bin/sh
-wall=`find ~/pix/wall -type f | shuf -n 1`
-wal -c
-wal -i $wall
-xwallpaper --zoom "$wall"
-xdotool key super+F5
+xwallpaper --zoom ~/pix/wall/cache.jpg
+(curl -s "https://wallhaven.cc/api/v1/search?sorting=random&atleast=1920x1080" | jq ".data[].path" | shuf -n 1 | xargs -I {} wget -O ~/pix/wall/cache.jpg {}) && xwallpaper --zoom ~/pix/wall/cache.jpg
