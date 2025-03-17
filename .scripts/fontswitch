@@ -1,0 +1,2 @@
+#!/bin/sh
+fc-list : family | tr ',' '\n' | fzf | xargs -I {} sed -i 's/\(family = "\)[^"]*\(".*\)/\1{}\2/g' .config/alacritty/alacritty.toml
