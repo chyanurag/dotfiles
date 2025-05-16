@@ -211,7 +211,6 @@ bindsym $mod+F2 exec brightnessctl set 5%-
 bindsym $mod+F3 exec brightnessctl set 5%+
 bindsym $mod+x exec --no-startup-id swaylock -c 000000
 bindsym $mod+p exec --no-startup-id ~/.local/bin/bye.sh
-for_window [class="OpenGL" instance="OpenGL"] floating enable
 exec ~/.local/bin/newwal
 exec ~/.local/bin/reminder.sh
-default_border none
+for_window [title="OpenGL"] floating enable
