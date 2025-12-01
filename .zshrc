@@ -12,9 +12,7 @@ setopt hist_find_no_dups
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 autoload -U colors && colors
-PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
 setopt autocd
-export PATH=$PATH:$HOME/.cargo/bin:$HOME/.local/bin
 alias ls='ls --color=auto'
 alias l='ls -la'
 alias ll='ls -l'
@@ -25,6 +23,10 @@ alias py='python'
 bindkey -e
 autoload -U select-word-style
 select-word-style bash
+PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
+export ANDROID_SDK_ROOT=/opt/android-sdk
+export ANDROID_HOME=/opt/android-sdk
+export PATH=$PATH:/opt/android-sdk/platform-tools:/opt/android-sdk/tools/bin:$HOME/.cargo/bin:$HOME/.local/bin
 
 # pnpm
 export PNPM_HOME="/home/ag/.local/share/pnpm"
