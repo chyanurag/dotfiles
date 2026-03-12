@@ -6,21 +6,24 @@ set $right semicolon
 set $term alacritty
 set $menu wmenu-run
 
+font pango:Fira Code 13
+
 input type:touchpad {
 	tap enabled
 	middle_emulation enabled
+	accel_profile flat
 	pointer_accel 1.0
-	accel_profile "flat"
 	drag_lock disabled
+  dwt enabled
 }
 
 input type:keyboard {
 	repeat_delay 150
-	repeat_rate 50
+	repeat_rate 40
 	xkb_options caps:escape
 }
 
-bindsym $mod+minus exec $term
+bindsym $mod+Return exec $term
 
 bindsym $mod+q kill
 
@@ -90,10 +93,6 @@ bindsym $mod+Shift+d focus mode_toggle
 
 bindsym $mod+a focus parent
 
-bindsym $mod+Shift+minus move scratchpad
-
-bindsym $mod+Return scratchpad show
-
 mode "resize" {
 
 	bindsym $left resize shrink width 10px
@@ -111,36 +110,44 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+bindsym Print exec grim ~/dl/screenshot-$(date +%s).png
+bindsym $mod+Shift+s exec grim -g "$(slurp)" ~/dl/screenshot-$(date +%s).png
+
 bindsym --locked XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
 bindsym --locked XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
 bindsym --locked XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
 
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+exec mako
+exec unlutter 2
+
+exec_always gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+exec_always wl-paste --type text --watch cliphist store
+exec_always wl-paste --type image --watch cliphist store
+bindsym $mod+Shift+v exec cliphist list | wofi --dmenu | cliphist decode | wl-copy
+
 bindsym $mod+F2 exec brightnessctl s 5%-
 bindsym $mod+F3 exec brightnessctl s 5%+
-bindsym $mod+x exec swaylock -c 000000
+bindsym $mod+x exec swaylock -f -c 000000
 bindsym $mod+p exec ~/.local/bin/bye.sh
 bindsym $mod+b exec brave
+bindsym $mod+i exec brave --incognito
 bindsym $mod+n exec alacritty -e nvim
-bindsym $mod+Shift+s exec ~/.local/bin/screenshot.sh
 
 bar {
 	status_command i3status
 }
 
-exec mako &
-exec unlutter 2 &
-exec ~/.local/bin/reminder.sh &
 focus_follows_mouse yes
-output * background ~/dl/wallpaper.jpg fill
+output * background ~/dl/wallpaper.png fill
 
-for_window [title="scratch_terminal"] move scratchpad
 for_window [title="OpenGL"] floating enable
 
-exec alacritty -T "scratch_terminal"
-exec swayidle -w \
-    event:lidswitch:off 'swaymsg "output * dpms off"' \
-    event:lidswitch:on  'swaymsg "output * dpms on"'
-
 seat * xcursor_theme Vanilla-DMZ-AA
-seat * hide_cursor 5000
+seat * hide_cursor 3000
